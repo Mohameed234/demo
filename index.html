@@ -7,7 +7,7 @@
 
         <script>
             function JSON_CSRF() {
-                fetch('https://rei.com/customer-lists/wishlists/418805760/entry', { method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json' }, body: {'sku':'2358740014','quantity': 1} });
+                fetch('https://rei.com/customer-lists/wishlists/418805760/entry', { method: 'POST', credentials: 'include', headers: { 'Content-Type': 'application/json' , 'Accept': '*/*' , 'Accept-Language': '"en-EG,en;q=0.9,ar-EG;q=0.8,ar;q=0.7,en-GB;q=0.6,en-US;q=0.5', 'Priority': 'u=1, i'}, body: {'sku':'2358740014','quantity': 1} });
 				window.location.href="https://www.rei.com/lists/418805760?storeId=8000&toUrl=%2Flists%2F418805760"
 			}
         </script>
