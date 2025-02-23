@@ -5,24 +5,29 @@
 <form>
 <script>
  document.getElementById("myForm").addEventListener("submit", function(event) {
-var request = require('request');
-var options = {
-   'method': 'POST',
-   'url': 'https://www.rei.com/customer-lists/wishlists/418805760/entry',
-   'headers': {
-      'Content-Type': 'application/json'
-   },
-   body: JSON.stringify({
-      "sku": "2358740014",
-      "quantity": 1
-   })
+   var myHeaders = new Headers();
+myHeaders.append("Accept", "*/*");
+myHeaders.append("Accept-Language", "en-EG,en;q=0.9,ar-EG;q=0.8,ar;q=0.7,en-GB;q=0.6,en-US;q=0.5");
+myHeaders.append("Priority", "u=1, i");
+myHeaders.append("Content-Type", "application/json");
 
-};
-request(options, function (error, response) {
-   if (error) throw new Error(error);
-   console.log(response.body);
+var raw = JSON.stringify({
+   "sku": "2358740014",
+   "quantity": 1
 });
-}); 
+
+var requestOptions = {
+   method: 'POST',
+   headers: myHeaders,
+   body: raw,
+   redirect: 'follow'
+};
+
+fetch("https://www.rei.com/customer-lists/wishlists/418805760/entry", requestOptions)
+   .then(response => response.text())
+   .then(result => console.log(result))
+   .catch(error => console.log('error', error));
+});
             </script>
 </body>
 </html>
